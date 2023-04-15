@@ -104,7 +104,7 @@ if(urlParams.has('key')){
     });
     
 } else {
-    elem.innerHTML="access denied";
+    elem.innerHTML="<p>for privacy reasons I have chosen to only make my cv available here given a key</p>";
     console.log("no key");
 }
 // buildCV();   
