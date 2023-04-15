@@ -84,9 +84,12 @@ function CVentry(entry) {
     title+="</p>"
     return `<div style="height:${len*3}em"><div>${title}<a href="${entry.link}">${entry.name}</a></div></div>`
 }
-async function buildCV(key) {
+async function parseBlob(key) {
     const blob=await decrypt(key);
     const data=await JSON.parse(blob);
+    return data;
+}
+function buildCV(data) {
     let html='';
     for (const key in data) {
         const entry=data[key];
@@ -99,12 +102,18 @@ const urlParams = new URLSearchParams(queryString);
 const elem = document.getElementById("main");
 if(urlParams.has('key')){
     const key = urlParams.get('key');
-    buildCV(key).then((data)=>{
-        elem.innerHTML=data;
+    parseBlob(key).then((data)=>{
+        elem.innerHTML=buildCV(data);
     });
     
+    
 } else {
-    elem.innerHTML="<p>for privacy reasons I have chosen to only make my cv available here given a key</p>";
+    fetch('./dummydata.json').then((response)=>{
+        response.json().then((data)=>{
+            elem.innerHTML=buildCV(data);
+        });
+    });
+    // elem.innerHTML="<p>for privacy reasons I have chosen to only make my cv available here given a key</p>";
     console.log("no key");
 }
 // buildCV();   
