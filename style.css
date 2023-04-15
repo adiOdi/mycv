@@ -1,0 +1,13 @@
+#main>div{
+    border-color: #009933;
+    border-style: solid;
+    border-width: 0 0 0 1em;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    margin-bottom: 1em;
+}
+#main>div>div>p{
+    margin: 0;
+}
