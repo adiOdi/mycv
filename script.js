@@ -45,22 +45,31 @@ async function importCryptoKey(base64) {
     ["encrypt", "decrypt"]);
 }
 
-async function main() {
-    let key = await window.crypto.subtle
-    .generateKey(
-        {
-            name: "AES-CTR",
-            length: 256
-        },
-        true,
-        ["encrypt", "decrypt"]
-    );
-    let kb64 = await exportCryptoKey(key);
-    console.log(kb64);
+async function main(kb64) {
+    // let key = await window.crypto.subtle
+    // .generateKey(
+    //     {
+    //         name: "AES-CTR",
+    //         length: 256
+    //     },
+    //     true,
+    //     ["encrypt", "decrypt"]
+    // );
+    // let kb64 = await exportCryptoKey(key);
+    // console.log(kb64);
     let importedKey = await importCryptoKey(kb64);
     let cipher = await encryptMessage(importedKey, "plop");
-    console.log(await decryptMessage(key,cipher));
+    console.log(await decryptMessage(importedKey, cipher));
 }
-main();
 
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+if(urlParams.has('key')){
+    const key = urlParams.get('key');
+    console.log(key);
+    main(key);
+} else {
+    console.log("no key");
+}
