@@ -1,41 +1,62 @@
 {
-    "school":{
-        "from":2000,
-        "to":2003,
-        "link":"https://school/",
-        "name":"dummydata"
-    },
-    "work":{
-        "from":2011,
-        "link":"https://www.work/",
-        "name":"for"
-    },
-    "other work":{
-        "from":2015,
-        "link":"https://www.other_work.com",
-        "name":"privacy"
-    },
-    "stuff":{
-        "from":2006,
-        "to":2010,
-        "link":"https://www.stuff.com/",
-        "name":"reasons"
-    },
-    "living":{
-        "from":2020,
-        "to":2023,
-        "link":"https://www.living.com/",
-        "name":"doing stuff"
-    },
-    "learning":{
-        "from":2004,
-        "to":2022,
-        "link":"https://learning.org/",
-        "name":"learning"
-    },
-    "working":{
-        "from":2001,
-        "link":"https://www.work.ing",
-        "name":"working"
-    }
+  "school": {
+    "from": 2015,
+    "to": 2018,
+    "link": "https://school/",
+    "name": "reasons",
+    "category": "work"
+  },
+  "work": {
+    "from": 2011,
+    "link": "https://www.work/",
+    "name": "intern",
+    "category": "education"
+  },
+  "stuff": {
+    "from": 2006,
+    "to": 2010,
+    "link": "https://www.stuff.com/",
+    "name": "dummydata",
+    "category": "work"
+  },
+  "living": {
+    "from": 2020,
+    "to": 2023,
+    "link": "https://www.living.com/",
+    "name": "having fun",
+    "category": "education"
+  },
+  "learning": {
+    "from": 2014,
+    "to": 2022,
+    "link": "https://learning.org/",
+    "name": "living",
+    "category": "education"
+  },
+  "working": {
+    "from": 2007,
+    "link": "https://www.work.ing",
+    "name": "for",
+    "category": "work"
+  },
+  "living2": {
+    "from": 2010,
+    "to": 2015,
+    "link": "https://www.living.com/",
+    "name": "privacy",
+    "category": "work"
+  },
+  "learning2": {
+    "from": 2017,
+    "to": 2018,
+    "link": "https://learning.org/",
+    "name": "learning",
+    "category": "education"
+  },
+  "working2": {
+    "from": 2024,
+    "link": "https://www.work.ing",
+    "name": "working",
+    "category": "education"
+  }
 }
