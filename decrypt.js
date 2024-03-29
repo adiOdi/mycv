@@ -34,17 +34,21 @@ async function exportCryptoKey(key) {
   return window.base64url.encode(exported);
 }
 async function importCryptoKey(base64) {
-  const buffer = window.base64url.decode(base64);
-  return await window.crypto.subtle.importKey(
-    "raw",
-    buffer,
-    {
-      name: "AES-CTR",
-      length: 256,
-    },
-    true,
-    ["encrypt", "decrypt"]
-  );
+  try {
+    const buffer = window.base64url.decode(base64);
+    return await window.crypto.subtle.importKey(
+      "raw",
+      buffer,
+      {
+        name: "AES-CTR",
+        length: 256,
+      },
+      true,
+      ["encrypt", "decrypt"]
+    );
+  } catch (error) {
+    return null;
+  }
 }
 
 // not really neccessary as one can just put any b64url text here
@@ -63,6 +67,7 @@ async function createKey() {
 
 async function decrypt(kb64) {
   let importedKey = await importCryptoKey(kb64);
+  if (!importedKey) return null;
   let cipher = await window.base64url.decode(encryptedHtml);
   return await decryptMessage(importedKey, cipher);
 }
@@ -76,6 +81,11 @@ async function encrypt(kb64) {
 }
 async function parseBlob(key) {
   const blob = await decrypt(key);
-  const data = await JSON.parse(blob);
-  return data;
+  if (!blob) return null;
+  try {
+    const data = await JSON.parse(blob);
+    return data;
+  } catch (error) {
+    return null;
+  }
 }

@@ -6,9 +6,14 @@ async function getData() {
   // url?key=...
   if (urlParams.has("key")) {
     const key = urlParams.get("key");
-    return await parseBlob(key);
+    const data = await parseBlob(key);
+    if (data) {
+      return data;
+    }
+    console.error("wrong key, using dummy data");
+  } else {
+    console.warn("no key, using dummy data");
   }
-  console.log("no key, using dummy data");
   let response = await fetch("./dummydata.json");
   return await response.json();
 }
